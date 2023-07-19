@@ -10,8 +10,23 @@ export class SingleFaceSnapComponent implements OnInit {
 
 @Input()  faceSnap!: FaceSnap;
 
+snapped!: boolean;
+snappedButtonText!: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.snapped = false;
+    this.snappedButtonText = "Oh Snap!";
+  }
+
+  onSnap(){
+    if (this.snapped){
+      this.snapped = false;
+      this.snappedButtonText = "Oh Snap!"
+    }else{
+      this.snapped = true;
+      this.snappedButtonText = "Snapped!"
+    }
   }
 }
