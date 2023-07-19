@@ -1,15 +1,8 @@
 <div>
-    <h2> {{ faceSnaps[0].title }} </h2>
-    <p> {{faceSnaps[0].description }}</p>
-    <p>Mise en ligne: {{faceSnaps[0].createDate | date}}</p><!-- Ici le pipe modifie le format de la date (son affichage)-->
-    <span [ngStyle]="{ color: 'rgb(0, ' + faceSnaps[0].snaps + ', 0)' }"> {{ faceSnaps[0].snaps}}</span>
-    <p *ngIf="faceSnaps[0].location">Lieu : {{ faceSnaps[0].location | uppercase}}</p>  <!-- On a fait un pipe avec | uppercase-->
+    <h2> {{ faceSnap.title }} </h2>
+    <p> {{faceSnap.description }}</p>
+    <p>Mise en ligne: {{faceSnap.createDate | date}}</p><!-- Ici le pipe modifie le format de la date (son affichage)-->
+    <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }"> {{ faceSnap.snaps}}</span>
+    <p *ngIf="faceSnap.location">Lieu : {{ faceSnap.location | uppercase}}</p>  <!-- On a fait un pipe avec | uppercase-->
 </div>
 
-<div>
-    <h2> {{ faceSnaps[1].title }} </h2>
-    <p> {{faceSnaps[1].description }}</p>
-    <p>Mise en ligne: {{faceSnaps[1].createDate | date : "dd/MM/yyyy, à HH:mm" }}</p>  <!-- Ici le pipe modifie encore plus le format de la date exemple:  | date : "longDate" -->
-    <span> {{ faceSnaps[1].snaps}}</span>
-    <p *ngIf="faceSnaps[1].location">Lieu : {{ faceSnaps[1].location | uppercase}}</p>
-</div>

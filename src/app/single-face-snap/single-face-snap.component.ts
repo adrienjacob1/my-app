@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FaceSnap } from '../models/face-snap.model';
 
 @Component({
@@ -8,26 +8,7 @@ import { FaceSnap } from '../models/face-snap.model';
 })
 export class SingleFaceSnapComponent implements OnInit {
 
-  faceSnaps: FaceSnap[] = [
-    {
-      id: 1,
-      title: "Mon premier facesnap",
-      description: "description du premier facesnap",
-      createDate: new Date(),
-      snaps: 200,
-      imageUrl: ""
-    },
-    {
-      id: 2,
-      title: "Mon second facesnap",
-      description: "description du second facesnap",
-      createDate: new Date(),
-      snaps: 0,
-      imageUrl: "",
-      location: "New York"
-    }
-
-  ]
+@Input()  faceSnap!: FaceSnap;
 
   constructor() { }
 
