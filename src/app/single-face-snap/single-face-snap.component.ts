@@ -12,13 +12,13 @@ export class SingleFaceSnapComponent implements OnInit {
 
 faceSnap!: FaceSnap;
 
-snapped!: boolean;
+isSnapped!: boolean;
 snappedButtonText!: string;
 
   constructor(private route: ActivatedRoute, private faceSnapsService: FaceSnapsService) { }
 
   ngOnInit(): void {
-    this.snapped = false;
+    this.isSnapped = false;
     this.snappedButtonText = "Oh Snap!";
 
     const snapId = +this.route.snapshot.params['id'];
@@ -26,11 +26,13 @@ snappedButtonText!: string;
   }
 
   onSnap(){
-    if (this.snapped){
-      this.snapped = false;
+    if (this.isSnapped){
+      this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, "unsnap")
+      this.isSnapped = false;
       this.snappedButtonText = "Oh Snap!"
     }else{
-      this.snapped = true;
+      this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, "snap")
+      this.isSnapped = true;
       this.snappedButtonText = "Snapped!"
     }
   }

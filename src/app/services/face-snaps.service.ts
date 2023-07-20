@@ -13,7 +13,7 @@ export class FaceSnapsService{
           description: "description du premier facesnap",
           createDate: new Date(),
           snaps: 200,
-          imageUrl: ""
+          imageUrl: "https://images.pexels.com/photos/129458/pexels-photo-129458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         },
         {
           id: 2,
@@ -21,7 +21,7 @@ export class FaceSnapsService{
           description: "description du second facesnap",
           createDate: new Date(),
           snaps: 0,
-          imageUrl: "",
+          imageUrl: "https://images.pexels.com/photos/933054/pexels-photo-933054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
           location: "New York"
         }
         
@@ -39,4 +39,10 @@ export class FaceSnapsService{
           throw new Error('Facesnap pas rouvé');
         }
       }
+
+      snapFaceSnapById(id: number, snapType: "snap" | "unsnap") {// Ici on sait le champ de valeur possible donc on reduit les possibilités dans le typage.
+        const faceSnap = this.getFaceSnapById(id);
+        snapType === "snap" ? faceSnap.snaps++ : faceSnap.snaps--;
+      }
+
 }
