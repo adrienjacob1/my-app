@@ -12,7 +12,7 @@ const routes: Routes = [ {
     path: 'facesnaps', component: FaceSnapListComponent
 },
 {
-    path: '/create', component: NewFaceSnapComponent
+    path: 'create', component: NewFaceSnapComponent
 },
 
 {
