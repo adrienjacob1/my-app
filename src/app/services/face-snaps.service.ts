@@ -1,11 +1,20 @@
 import{ FaceSnap } from '../models/face-snap.model';
 import{ Injectable} from '@angular/core';
+import{ Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+
+
 
 @Injectable({
     providedIn: "root"
 })
 
 export class FaceSnapsService{
+
+    constructor(private http: HttpClient) {}
+
+
     faceSnaps: FaceSnap[] = [
         {
           id: 1,
@@ -27,22 +36,18 @@ export class FaceSnapsService{
         
       ]
 
-      getAllFaceSnaps(): FaceSnap[] {
-        return this.faceSnaps;
+      getAllFaceSnaps(): Observable<FaceSnap[]> {
+        return this.http.get<FaceSnap[]>(`http://localhost:3000/facesnaps`);  // ici on met le port sur lequel tourne le backend (dossier angular-intermediaire)
       }
 
-      getFaceSnapById(faceSnapId:number) {
-        const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId)
-        if (faceSnap) {
-          return faceSnap;
-        }else {
-          throw new Error('Facesnap pas rouvé');
-        }
+      getFaceSnapById(faceSnapId:number): Observable<FaceSnap> {
+        return this.http.get<FaceSnap>(`http://localhost:3000/facesnaps/${faceSnapId}`);
+       
       }
 
       snapFaceSnapById(id: number, snapType: "snap" | "unsnap") {// Ici on sait le champ de valeur possible donc on reduit les possibilités dans le typage.
-        const faceSnap = this.getFaceSnapById(id);
-        snapType === "snap" ? faceSnap.snaps++ : faceSnap.snaps--;
+        //const faceSnap = this.getFaceSnapById(id);
+        //snapType === "snap" ? faceSnap.snaps++ : faceSnap.snaps--;
       }
 
       getNewFaceSnap(formValue: { title: string, description: string, imageUrl: string, location?: string}) {

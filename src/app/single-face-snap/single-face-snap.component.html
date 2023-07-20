@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="{ snapped: isSnapped === true }">
+<div class="card" *ngIf="faceSnap$ | async as faceSnap" [ngClass]="{ snapped: isSnapped === true }">
     <h2> {{ faceSnap.title }} </h2>
     <p> {{faceSnap.description }}</p>
     <p>Mise en ligne: {{faceSnap.createDate | date}}</p><!-- Ici le pipe modifie le format de la date (son affichage)-->
