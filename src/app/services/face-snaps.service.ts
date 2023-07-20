@@ -45,4 +45,21 @@ export class FaceSnapsService{
         snapType === "snap" ? faceSnap.snaps++ : faceSnap.snaps--;
       }
 
+      getNewFaceSnap(formValue: { title: string, description: string, imageUrl: string, location?: string}) {
+        const newFaceSnap: FaceSnap = {
+          ...formValue,
+          /*{ En fait les ... permettent d'ecrire lobjet automatiquement sinon faut faire a la main:
+            title: formValue.title,
+            description: etc..
+          }*/
+          snaps: 0,
+          createDate: new Date(),
+          id: this.faceSnaps[this.faceSnaps.length - 1].id + 1
+        };
+        return newFaceSnap;
+      }
+
+      saveNewFaceSnap(newFaceSnap: FaceSnap) {
+        this.faceSnaps.push(newFaceSnap);
+      }
 }
