@@ -3,7 +3,7 @@
     <p> {{faceSnap.description }}</p>
     <p>Mise en ligne: {{faceSnap.createDate | date}}</p><!-- Ici le pipe modifie le format de la date (son affichage)-->
     <p>
-        <button (click)="onSnap()">{{snappedButtonText}}</button>
+        <button (click)="onSnap(faceSnap.id)">{{snappedButtonText}}</button>
         <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }"> {{ faceSnap.snaps}}</span>
     </p>
     <p *ngIf="faceSnap.location">Lieu : {{ faceSnap.location | uppercase}}</p>  <!-- On a fait un pipe avec | uppercase-->

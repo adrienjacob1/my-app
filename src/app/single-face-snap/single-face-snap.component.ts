@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 import { FaceSnap } from '../models/face-snap.model';
 import { FaceSnapsService } from '../services/face-snaps.service';
@@ -27,15 +27,23 @@ snappedButtonText!: string;
     this.faceSnap$ = this.faceSnapsService.getFaceSnapById(snapId);
   }
 
-  onSnap(){
+  onSnap(id: number){
     if (this.isSnapped){
-      //this.faceSnapsService.snapFaceSnapById(this.faceSnap$.id, "unsnap")
-      this.isSnapped = false;
-      this.snappedButtonText = "Oh Snap!"
+      this.faceSnap$ = this.faceSnapsService.snapFaceSnapById(id, "unsnap").pipe(
+        tap(() =>{
+          this.isSnapped = false;
+          this.snappedButtonText = "Oh Snap!"
+        })
+      )
+     
     }else{
-      //this.faceSnapsService.snapFaceSnapById(this.faceSnap$.id, "snap")
-      this.isSnapped = true;
-      this.snappedButtonText = "Snapped!"
+      this.faceSnap$ = this.faceSnapsService.snapFaceSnapById(id, "snap").pipe(
+        tap(() =>{
+          this.isSnapped = true;
+        this.snappedButtonText = "Snapped!"
+        })
+      )
+      
     }
   }
 }
