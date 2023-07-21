@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FaceSnapPreviewComponent } from './face-snap-preview/face-snap-preview.component';
 import { HeaderComponent } from './header/header.component';
 import { NewFaceSnapComponent } from './new-face-snap/new-face-snap.component';
+import { httpinterceptorProviders } from './interceptors';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { NewFaceSnapComponent } from './new-face-snap/new-face-snap.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    httpinterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
