@@ -6,6 +6,7 @@ import { FaceSnapPreviewComponent } from './components/face-snap-preview/face-sn
 import { SingleFaceSnapComponent } from './components/single-face-snap/single-face-snap.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FaceSnapsRoutingModule } from './face-snaps-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -19,7 +20,8 @@ import { FaceSnapsRoutingModule } from './face-snaps-routing.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FaceSnapsRoutingModule
+    FaceSnapsRoutingModule,
+    SharedModule
   ],
   exports: [
     FaceSnapListComponent,
