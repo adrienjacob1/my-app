@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 
@@ -12,10 +12,12 @@ import { FaceSnapsService } from '../../../core/services/face-snaps.service';
 })
 export class SingleFaceSnapComponent implements OnInit {
 
+
 faceSnap$!: Observable<FaceSnap>;
 
 isSnapped!: boolean;
 snappedButtonText!: string;
+switchCase = 2;
 
   constructor(private route: ActivatedRoute, private faceSnapsService: FaceSnapsService) { }
 
@@ -46,4 +48,6 @@ snappedButtonText!: string;
       
     }
   }
+
+ 
 }

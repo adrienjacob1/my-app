@@ -12,5 +12,13 @@
 
     <button routerLink= "/facesnaps">Retour</button>
 
+    <div [ngSwitch]="switchCase">
+        <a *ngSwitchCase="1" href="https://www.linkedin.com/feed/">Retrouvez-moi sur LN</a>
+        <a *ngSwitchCase="2" href="https://www.facebook.com/">Retrouvez-moi sur FB</a>
+        <a *ngSwitchDefault href="https://www.instagram.com/">Retrouvez-moi sur IG</a>
+    </div>
+
+    
+
 </div>
 
